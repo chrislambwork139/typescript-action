@@ -49,6 +49,6 @@ jobs:
             powershell -Command "
               cd ${{ vars.VM_PATH }};
               npm ci --omit=dev;
-              pm2 restart christopher || pm2 start dist/index.js --name christopher;
+              pm2 restart my-ts-app || pm2 start dist/index.js --name my-ts-app;
               pm2 save
             "
