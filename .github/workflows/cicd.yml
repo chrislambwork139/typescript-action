@@ -2,7 +2,7 @@ name: Demo CICD Multi-Stage Deployment
 
 on:
   workflow_run:
-    workflows: ["Continuous Integration"] # 🌟 CRUCIAL: Match the exact name field from the top of the CI workflow
+    workflows: ["Demo CI Pipeline"] # 🌟 CRUCIAL: Match the exact name field from the top of the CI workflow
     types:
       - completed              # Triggers when the target workflow completely finishes running
 
@@ -13,7 +13,7 @@ permissions:
 jobs:
   # Call your completely separate existing CI file
   ci:
-    uses: ./.github/workflows/ci.yml
+    uses: ./.github/workflows/test-ci.yml
  
   # =========================================================================
   # DEPLOY TO DEV (REUSING TEMPLATE)
