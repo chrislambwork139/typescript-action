@@ -9,6 +9,7 @@ on:
 permissions:
   id-token: write # 🌟 Required for requesting the JWT OIDC token
   contents: read  # 🌟 Required for actions/checkout
+  actions: read
 
 jobs:
   # Call your completely separate existing CI file
@@ -25,7 +26,7 @@ jobs:
     uses: ./.github/workflows/deploy-to-vm-template.yml
     with:
       environment-name: 'dev' 
-
+      run-id: ${{ github.event.workflow_run.id }}
     # 🌟 Explicitly maps the secret permission layer to the template
     secrets: inherit
 
@@ -39,6 +40,7 @@ jobs:
     uses: ./.github/workflows/deploy-to-vm-template.yml
     with:
       environment-name: 'uat'    
+      run-id: ${{ github.event.workflow_run.id }}
     # 🌟 Explicitly maps the secret permission layer to the template
     secrets: inherit 
 
@@ -51,5 +53,6 @@ jobs:
     uses: ./.github/workflows/deploy-to-vm-template.yml
     with:
       environment-name: 'prod'  
+      run-id: ${{ github.event.workflow_run.id }}
     # 🌟 Explicitly maps the secret permission layer to the template
     secrets: inherit
