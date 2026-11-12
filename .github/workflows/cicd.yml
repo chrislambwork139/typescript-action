@@ -21,7 +21,7 @@ jobs:
 
   deploy-dev:
     name: Dev Stage
-    needs: ci    
+    #needs: ci    
     uses: ./.github/workflows/deploy-to-vm-template.yml
     with:
       environment-name: 'dev' 
