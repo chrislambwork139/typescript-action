@@ -36,7 +36,7 @@ jobs:
   deploy-uat:
     name: UAT Stage
     needs: deploy-dev     
-    uses: ./.github/workflows/deploy-template.yml
+    uses: ./.github/workflows/deploy-to-vm-template.yml
     with:
       environment-name: 'uat'    
     # 🌟 Explicitly maps the secret permission layer to the template
@@ -48,7 +48,7 @@ jobs:
   deploy-prod:
     name: Prod Stage
     needs: deploy-uat   
-    uses: ./.github/workflows/deploy-template.yml
+    uses: ./.github/workflows/deploy-to-vm-template.yml
     with:
       environment-name: 'prod'  
     # 🌟 Explicitly maps the secret permission layer to the template
